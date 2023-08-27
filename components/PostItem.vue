@@ -17,7 +17,7 @@
     </div>
     <NuxtLink
       to="/posts/1"
-      class="bg-blue-500 px-4 py-3 rounded-lg text-white inline-block mt-5"
+      class="bg-blue-500 px-4 py-3 rounded-lg text-white inline-block mt-5 hover:opacity-60"
       >Read More</NuxtLink
     >
   </div>
