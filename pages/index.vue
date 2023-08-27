@@ -1,3 +1,5 @@
 <template>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quisquam et ut porro, adipisci veritatis beatae repudiandae! Iste quibusdam dicta fugiat, sunt sed eius cumque aspernatur facilis aliquam nobis dolores?</p>
+    <div v-for="n in 2" :key="n" class="py-8"> 
+        <PostItem/>
+    </div>
 </template>
