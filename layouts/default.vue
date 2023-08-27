@@ -14,8 +14,10 @@
                 </li>
             </ul>
         </nav>
-        <div class="bg-gray-100 h-screen w-full">
-            {{$slot}}
+        <div class="bg-gray-100 h-screen w-full p-4">
+            <div class="mx-auto container">
+                <slot />
+            </div>
         </div>
     </div>
 </template>
