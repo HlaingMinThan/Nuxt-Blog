@@ -14,10 +14,9 @@
 </template>
 
 <script setup lang="ts">
-let route = useRoute();
-useHead({
-    title : 'About'
-})
+    let route = useRoute();
+    useHead({
+        title : 'About'
+    })
     const { data : post } = await useFetch('http://localhost:8000/api/posts/'+route.params.id);
-
 </script>
