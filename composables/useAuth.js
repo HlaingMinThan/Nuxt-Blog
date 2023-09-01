@@ -5,11 +5,11 @@ function useAuth() {
         }
     }
 
-    let getUser = () => {
+    let user = computed(() => {
         if(process.client) {
             return JSON.parse(localStorage.getItem('user'));
         }
-    }
+    })
     
     let removeUser = () => {
         if(process.client) { 
@@ -18,9 +18,9 @@ function useAuth() {
     }
 
     let isLoggedIn = computed(() => {
-        return !!getUser();
+        return !!user.value;
     });
-    return {setUser,getUser,isLoggedIn,removeUser}
+    return {setUser,user,isLoggedIn,removeUser}
 }
 
 export  {useAuth};

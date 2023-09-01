@@ -22,6 +22,7 @@
                     <li>
                         <button @click="logout" class="bg-red-500 px-3 py-2 rounded-lg text-white">Logout</button>
                     </li>
+                    <li>{{user.name}}</li>
                 </template>
                 <template v-else>
                     <li>
@@ -38,7 +39,7 @@
 <script setup>
 let {$apiFetch} = useNuxtApp();
 let router = useRouter();
-let {removeUser,isLoggedIn} = useAuth();
+let {removeUser,isLoggedIn, user} = useAuth();
 console.log(isLoggedIn.value)
 let logout = async () => {
     try {
