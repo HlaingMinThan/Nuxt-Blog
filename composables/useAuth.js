@@ -1,13 +1,20 @@
 function useAuth() {
     let setUser = (name) => {
-        localStorage.setItem('user',JSON.stringify({name}))
+        if(process.client) {
+            localStorage.setItem('user',JSON.stringify({name}))
+        }
     }
 
     let getUser = () => {
-        return JSON.parse(localStorage.getItem('user'));
+        if(process.client) {
+            return JSON.parse(localStorage.getItem('user'));
+        }
     }
+    
     let removeUser = () => {
-        return localStorage.removeItem('user');
+        if(process.client) { 
+            return localStorage.removeItem('user');
+        }
     }
 
     let isLoggedIn = computed(() => {

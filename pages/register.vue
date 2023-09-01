@@ -30,6 +30,9 @@
 </template>
 
 <script setup>
+    definePageMeta({
+    middleware : ['guest']
+    })
     let name = ref('');
     let email = ref('');
     let password = ref('');
@@ -60,7 +63,7 @@
             isLoading.value = false;
             email.value =  '';
             password.value =  '';
-            router.push('/my-info');
+            window.location.pathname = '/my-info';
         }catch (e) {
             isLoading.value = false;
             errors.value = Object.values(e.data.errors).flat();

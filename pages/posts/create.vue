@@ -22,6 +22,9 @@
 </template>
 
 <script setup>
+    definePageMeta({
+    middleware : ['auth']
+    })
     let title = ref('');
     let body = ref('');
     let errors = ref([]);

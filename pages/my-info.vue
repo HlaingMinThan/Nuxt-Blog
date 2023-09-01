@@ -13,6 +13,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+  middleware : ['auth']
+})
 let {$apiFetch} = useNuxtApp();
 let user = ref(null);
 let posts = ref([]);
