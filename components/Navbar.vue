@@ -1,7 +1,7 @@
 <template>
     <nav class="bg-white p-5 flex justify-between items-center container mx-auto">
             <h1 class="text-3xl font-bold"><NuxtLink to="/" >Logo</NuxtLink></h1>
-            <ul class="flex space-x-10 text-lg">
+            <ul class="flex space-x-10 text-lg items-center">
                 <li>
                     <NuxtLink to="/">Home</NuxtLink>
                 </li>
@@ -18,6 +18,9 @@
                 <li>
                     <NuxtLink to="/posts/create" class="bg-blue-500 px-3 py-2 rounded-lg text-white">Create</NuxtLink>
                 </li>
+                <li>
+                    <button @click="logout" class="bg-red-500 px-3 py-2 rounded-lg text-white">Logout</button>
+                </li>
                 <!-- on non     auth state -->
                 <li>
                     <NuxtLink to="/login" class="border px-3 py-2 rounded-lg">Login</NuxtLink>
@@ -28,3 +31,18 @@
             </ul>
         </nav>
 </template>
+
+<script setup>
+let {$apiFetch} = useNuxtApp();
+let router = useRouter();
+let logout = async () => {
+    try {
+        await $apiFetch('/api/logout', {
+            method : "POST"
+        });
+        router.push('/')
+    }catch(e) {
+        console.log(e.data)
+    }
+}
+</script>
