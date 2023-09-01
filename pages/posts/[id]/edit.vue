@@ -52,8 +52,12 @@
     }
     //set edit form values
     onMounted( async () => {
-        let post  = await $apiFetch(`/api/posts/${route.params.id}`);
-        title.value = post.title
-        body.value = post.body
+        try {
+            let post  = await $apiFetch(`/api/authPosts/${route.params.id}`);
+            title.value = post.title;
+            body.value = post.body;
+        }catch(e) {
+            window.location.pathname = '/'
+        }
     })
 </script>
