@@ -5,5 +5,6 @@
 </template>
 
 <script setup>
-    const { data : posts } = await useFetch('http://localhost:8000/api/posts');
+    let {$apiFetch} = useNuxtApp();
+    const posts = await $apiFetch('/api/posts');
 </script>

@@ -13,10 +13,11 @@
       </p>
 </template>
 
-<script setup lang="ts">
+<script setup>
     let route = useRoute();
+    let {$apiFetch} = useNuxtApp();
     useHead({
         title : 'About'
     })
-    const { data : post } = await useFetch('http://localhost:8000/api/posts/'+route.params.id);
+    const post = await $apiFetch('/api/posts/'+route.params.id)
 </script>
