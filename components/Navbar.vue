@@ -11,6 +11,9 @@
                 <li>
                     <NuxtLink to="/contact">Contact</NuxtLink>
                 </li>
+                <li>
+                    <NuxtLink to="/posts/create" class="bg-blue-500 px-3 py-2 rounded-lg text-white">Create</NuxtLink>
+                </li>
             </ul>
         </nav>
 </template>
