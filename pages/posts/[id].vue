@@ -5,7 +5,7 @@
       </h1>
       <div class="flex space-x-2 items-center justify-center">
         <p>{{post.user.name}}</p>
-        <p class="text-gray-500 text-sm">{{post.created_at}}.</p>
+        <p class="text-gray-500 text-sm">{{moment(post.created_at).fromNow()}}.</p>
       </div>
     </div>
       <p class="mt-10">
@@ -14,10 +14,11 @@
 </template>
 
 <script setup>
-    let route = useRoute();
-    let {$apiFetch} = useNuxtApp();
-    useHead({
-        title : 'About'
-    })
-    const post = await $apiFetch('/api/posts/'+route.params.id)
+import moment from 'moment';
+let route = useRoute();
+let {$apiFetch} = useNuxtApp();
+useHead({
+    title : 'About'
+})
+const post = await $apiFetch('/api/posts/'+route.params.id)
 </script>

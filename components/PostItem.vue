@@ -6,7 +6,7 @@
       </h1>
       <div class="flex space-x-2 items-center">
         <p>{{post.user.name}}</p>
-        <p class="text-gray-500 text-sm">{{post.created_at}}.</p>
+        <p class="text-gray-500 text-sm">{{moment(post.created_at).fromNow()}}.</p>
       </div>
       <p class="line-clamp-2">
         {{post.body}}
@@ -21,6 +21,8 @@
 </template>
 
 <script setup>
+import moment from 'moment';
+
 defineProps( {
   post : Object
 })
