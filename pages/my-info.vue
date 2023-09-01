@@ -7,6 +7,9 @@
     <ul>
         <li v-for="post in posts" :key="post.id">
             <NuxtLink :to="`/posts/${post.id}`" class="text-blue-500 underline">{{post.title}}</NuxtLink>
+            - 
+            <NuxtLink :to="`/posts/${post.id}/edit`" class="text-blue-500 underline">edit</NuxtLink> &nbsp;
+            <button @click="deletePost(post.id)" class="text-red-500 underline">delete</button>
         </li>
     </ul>
   </div>
@@ -19,8 +22,19 @@ definePageMeta({
 let {$apiFetch} = useNuxtApp();
 let user = ref(null);
 let posts = ref([]);
+let router = useRouter();
+let getPosts =  async () => {
+  posts.value = await $apiFetch('/api/user/posts');
+}
 onMounted(async() => {
     user.value = await $apiFetch('/api/user');
-    posts.value = await $apiFetch('/api/user/posts');
+    getPosts()
 })
+
+let deletePost = async (id) => {
+  await $apiFetch(`/api/posts/${id}/delete`, {
+    method : "DELETE"
+  });
+  getPosts();
+}
 </script>
