@@ -8,7 +8,7 @@
         <p>{{post.user.name}}</p>
         <p class="text-gray-500 text-sm">{{post.created_at}}.</p>
       </div>
-      <p>
+      <p class="line-clamp-2">
         {{post.body}}
       </p>
     </div>
