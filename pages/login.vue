@@ -31,6 +31,7 @@
     let csrf = () => {
         return $apiFetch('/sanctum/csrf-cookie');
     }
+    let {setUser} = useAuth();
     let submit = async () => {
         try {
             await csrf();
@@ -41,7 +42,9 @@
                         email: email.value,
                         password:password.value
                     }
-                })
+            })
+            let user = await $apiFetch('/api/user');
+            setUser(user.name);
             isLoading.value = false;
             email.value =  '';
             password.value =  '';

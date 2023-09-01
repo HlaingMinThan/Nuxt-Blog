@@ -35,14 +35,16 @@
 <script setup>
 let {$apiFetch} = useNuxtApp();
 let router = useRouter();
+let {removeUser} = useAuth();
 let logout = async () => {
     try {
         await $apiFetch('/api/logout', {
             method : "POST"
         });
+        removeUser();
         router.push('/')
     }catch(e) {
-        console.log(e.data)
+        console.log(e)
     }
 }
 </script>

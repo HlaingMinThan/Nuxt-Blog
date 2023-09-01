@@ -54,6 +54,9 @@
                         password_confirmation:passwordConfirm.value
                     }
                 })
+            let {setUser} = useAuth();
+            let user = await $apiFetch('/api/user');
+            setUser(user.name);
             isLoading.value = false;
             email.value =  '';
             password.value =  '';
